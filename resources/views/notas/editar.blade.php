@@ -44,6 +44,8 @@
 
 </form>
 
+<a href="{{route('editar.volver')}}" class="btn btn-success btn-block mb-3">Volver</a>
+
     
 
 

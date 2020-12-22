@@ -11,12 +11,27 @@ use App\Models\Nota;
 class NotasControlador extends Controller
 {
     public function root(){
-        $notas = Nota::all();
+        // $notas = Nota::all();
+        $notas = Nota::paginate(4);
         // return view('welcome');
         // return redirect('/home');
         // return $notas;
+
+        $lasPage = $notas->currentPage();
+        session(['lastpage' => $lasPage]);
+
+        // dump($lasPage);
         return view('notas.menu', compact('notas'));
     }
+
+    public function volver(){
+        $page = session('lastpage');
+
+        return redirect('?page='.$page);
+
+    }
+
+
 
     public function detalle($id){
         $nota = Nota::findOrFail($id);
@@ -69,8 +84,11 @@ class NotasControlador extends Controller
 
         $notaActualizada->save();
 
+
         // return back()->with('mensajeActualizado', 'Nota actualizada');
-        return redirect('/')->with('mensajeActualizado', 'Nota actualizada');
+        // return redirect('/')->with('mensajeActualizado', 'Nota actualizada');
+        $page = session('lastpage');
+        return redirect('?page='.$page);
     }
 
     // 

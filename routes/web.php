@@ -27,6 +27,7 @@ Route::delete('/eliminar/{id}', 'NotasControlador@eliminar')->name('notas.elimin
 Route::get('/editar/{id}', 'NotasControlador@editar')->name('notas.editar');
 Route::put('/update/{id}', 'NotasControlador@update')->name('notas.update');
 
+Route::get('/volver', 'NotasControlador@volver')->name('editar.volver');
 
 // VALIDACION DE FORMULARIOS
 
@@ -52,3 +53,14 @@ Route::get('/actualizar', 'MiControlador@actualizar');
 /* HELPERS */
 
 Route::get('/helpers', 'MiControlador@helpers');
+
+// SESSION
+
+Route::get('/set', 'MiControlador@set');
+Route::get('/get1', 'MiControlador@get1');
+Route::get('/get2', 'MiControlador@get2');
+Route::get('/forget1', 'MiControlador@forget1');
+
+// REDIRECTION
+
+Route::get('/redir', 'MiControlador@redir');
