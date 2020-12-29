@@ -50,6 +50,14 @@ Route::get('/borrar', 'MiControlador@borrar');
 Route::get('/actualizar', 'MiControlador@actualizar');
 
 
+// USO DE QUERY BUILDER
+
+Route::get('/qbleer', 'ArticuloController@leer');
+Route::get('/qbguardar', 'ArticuloController@guardar');
+Route::get('/qbborrar', 'ArticuloController@borrar');
+Route::get('/qbactualizar', 'ArticuloController@actualizar');
+
+
 /* HELPERS */
 
 Route::get('/helpers', 'MiControlador@helpers');
