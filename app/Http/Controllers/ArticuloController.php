@@ -47,23 +47,52 @@ class ArticuloController extends Controller
     }
     public function guardar(){
 
-        DB::table('articulos')->insert([
-            'nombre' => 'TV40',
-            'descripcion' => 'tv grande',
-            'codigo' => 'LCD40P',
-            'stock' => 10,
-            'precio' => 10987,
-            'status' => 1,
+        // DB::table('articulos')->insert([
+        //     'nombre' => 'TV40',
+        //     'descripcion' => 'tv grande',
+        //     'codigo' => 'LCD40P',
+        //     'stock' => 10,
+        //     'precio' => 10987,
+        //     'status' => 1,
 
-        ]);
+        // ]);
+        DB::table('articulos')->insert(
+            [
+                [
+                    'nombre' => 'TV40',
+                    'descripcion' => 'tv grande',
+                    'codigo' => 'LCD40P',
+                    'stock' => 10,
+                    'precio' => 10987,
+                    'status' => 1,
+                ], 
+                [
+                    'nombre' => 'TV145',
+                    'descripcion' => 'tv + grande',
+                    'codigo' => 'LCD40P2',
+                    'stock' => 100,
+                    'precio' => 102987,
+                    'status' => 1,
+                ]
+            ]
+    );
 
         return 'ok guardado';
 
     }
     public function borrar(){
+        DB::table('articulos')->where('id', '>', 5)->delete();
+
+        return 'borrados';
 
     }
     public function actualizar(){
+        DB::table('articulos')->where('id', 1)
+        ->update([
+            'precio' => 11111
+        ]);
+
+        return 'actualizado';
 
     }
 }
